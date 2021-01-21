@@ -12,7 +12,7 @@
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
     "generate": "prisma generate",
     "migrate": "npx prisma migrate dev --name init --preview-feature",
-    "migrateprod": "prisma migrate deploy",
+    "migrateprod": "prisma migrate deploy --preview-feature",
     "prod": "tsc && node ./dist/index.js",
     "postinstall": "tsc && cp ./src/serviceAccountKey.json dist/ && npm run migrateprod && npm run generate && rm -v -rf src",
     "start": "node ./dist/index.js"
