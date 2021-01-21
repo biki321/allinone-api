@@ -13,7 +13,7 @@
     "generate": "prisma generate",
     "migrate": "npx prisma migrate dev --name init --preview-feature",
     "prod": "tsc && node ./dist/index.js",
-    "postinstall": "tsc && mv serviceAccountKey.json dist/ && rm -v -rf src",
+    "postinstall": "tsc && mv ./src/serviceAccountKey.json dist/ && rm -v -rf src",
     "start": "node ./dist/index.js"
   },
   "author": "Biki Deka",
