@@ -12,7 +12,7 @@ import scheduleStart from "./helpers/scheduler";
 dotenv.config();
 
 const serviceAccount = require("./serviceAccountKey.json");
-const pvk = process.env.PRIVATE_KEY!.replace(/\\n/g, "\n");
+// const pvk = process.env.PRIVATE_KEY!.replace(/\\n/g, "\n");
 // admin.initializeApp({
 //   credential: admin.credential.cert({
 //     projectId: process.env.PROJECT_ID,
