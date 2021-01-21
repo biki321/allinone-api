@@ -48,7 +48,7 @@ const scheduleStart = function () {
             notification: {
               title: `Reminder for ${ele.company}`,
               body: "click here to get to the post",
-              click_action: ele.url,
+              // click_action: ele.url,
             },
             data: {
               url: ele.url,
