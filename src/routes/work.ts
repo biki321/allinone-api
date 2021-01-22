@@ -85,11 +85,13 @@ router.post("/add", auth, async (req: any, res) => {
         user: {
           connect: { id: userId },
         },
-        remindat: req.body.remindat,
+        remindat: req.body.remindat === "" ? null : req.body.remindat,
         needRemind: req.body.remindat === "" ? false : req.body.needRemind,
       },
     });
+    console.log(link);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ msg: "something went wrong" });
   }
 

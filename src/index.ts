@@ -31,7 +31,7 @@ const port: string = process.env.PORT || "8032";
 const prisma = new PrismaClient();
 
 const corsOptions = {
-  origin: "https://allinone321.herokuapp.com",
+  origin: ["https://allinone321.herokuapp.com", "http://localhost:3000"],
   optionsSuccessStatus: 200, // For legacy browser support
 };
 
