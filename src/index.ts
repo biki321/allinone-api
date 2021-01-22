@@ -49,7 +49,7 @@ app.use("/api", workRouter);
 //route for notification subscribe
 app.use("/api", notificationRouter);
 
-// scheduleStart();
+scheduleStart();
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

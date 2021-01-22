@@ -23,7 +23,10 @@ router.get("/links/:company", auth, async (req: any, res) => {
           return {
             ...ele,
             title: r.title,
-            image: r.image,
+            image:
+              r.image === null || r.image === undefined || r.image === ""
+                ? "https://dummyimage.com/200x100/868787/ebecf0.png&text=No+Image+Available"
+                : r.image,
           };
         } catch (error) {
           return {
@@ -73,6 +76,7 @@ router.post("/add", auth, async (req: any, res) => {
     if (!companyName) {
       companyName = "some-company";
     }
+    // console.log(new Date(req.body.remindat).toISOString());
     link = await prisma.link.create({
       data: {
         url: url,
@@ -81,7 +85,7 @@ router.post("/add", auth, async (req: any, res) => {
         user: {
           connect: { id: userId },
         },
-        remindat: new Date(req.body.remindat),
+        remindat: new Date(req.body.remindat).toISOString(),
         needRemind: req.body.remindat === "" ? false : req.body.needRemind,
       },
     });

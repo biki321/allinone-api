@@ -55,7 +55,9 @@ const scheduleStart = function () {
         admin
           .messaging()
           .sendAll(messages)
-          .then((response) => {});
+          .then((response) => {
+            // console.log("sent", response.successCount);
+          });
       }
     } catch (error) {
       throw error;
