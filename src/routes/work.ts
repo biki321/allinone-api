@@ -76,7 +76,7 @@ router.post("/add", auth, async (req: any, res) => {
     if (!companyName) {
       companyName = "some-company";
     }
-    // console.log(new Date(req.body.remindat).toISOString());
+    console.log("date to save:", new Date(req.body.remindat).toISOString());
     link = await prisma.link.create({
       data: {
         url: url,
@@ -85,7 +85,7 @@ router.post("/add", auth, async (req: any, res) => {
         user: {
           connect: { id: userId },
         },
-        remindat: new Date(req.body.remindat).toISOString(),
+        remindat: new Date(req.body.remindat),
         needRemind: req.body.remindat === "" ? false : req.body.needRemind,
       },
     });
