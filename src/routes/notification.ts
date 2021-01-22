@@ -4,7 +4,6 @@ import auth from "./verifyToken";
 const router = Router();
 
 router.post("/subscribe", auth, async (req: any, res) => {
-  console.log("route for subscribe");
   if (!req.body.fcmtoken) {
     return res.status(404).json({ msg: "no fcmtoken provided" });
   }
@@ -45,7 +44,6 @@ const updateFcmToken = async (userId: number, fcmtoken: string) => {
         fcmtoken: fcmtoken,
       },
     });
-    console.log(user);
   } catch (error) {
     throw error;
   }

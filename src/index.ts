@@ -21,7 +21,6 @@ const serviceAccount = require("./serviceAccountKey.json");
 //   }),
 // });
 
-// console.log(process.env.PRIVATE_KEY!);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
@@ -50,7 +49,7 @@ app.use("/api", workRouter);
 //route for notification subscribe
 app.use("/api", notificationRouter);
 
-scheduleStart();
+// scheduleStart();
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

@@ -14,11 +14,8 @@ interface message {
 
 const scheduleStart = function () {
   cron("00 * * * * *", async function () {
-    console.log(new Date());
-    console.log("running send notification worker for" + moment().format());
     try {
       const date = new Date(new Date().setUTCSeconds(0, 0)).toISOString();
-      console.log(date);
       const result = await prisma.link.findMany({
         where: {
           remindat: date,
@@ -40,7 +37,6 @@ const scheduleStart = function () {
           },
         },
       });
-      console.log(result);
       if (result.length > 0) {
         const messages: message[] = [];
         result.forEach((ele) => {
@@ -59,14 +55,10 @@ const scheduleStart = function () {
         admin
           .messaging()
           .sendAll(messages)
-          .then((response) => {
-            console.log(
-              response.successCount + " messages were sent successfully"
-            );
-          });
+          .then((response) => {});
       }
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   });
 };

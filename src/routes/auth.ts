@@ -7,7 +7,6 @@ import auth from "./verifyToken";
 const router = Router();
 
 router.post("/signup", async (req, res) => {
-  console.log("singup");
   const password: string = req.body.password;
   const email: string = req.body.email;
 
@@ -15,7 +14,6 @@ router.post("/signup", async (req, res) => {
   if (!(password.length >= 6 && password.length <= 16)) {
     return res.status(404).json({ msg: "not a valid password" });
   } else if (await isEmailExist(email)) {
-    console.log("email exist");
     return res.status(404).json({ msg: "email already exist" });
   }
 
@@ -32,7 +30,6 @@ router.post("/signup", async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ msg: "something went wrong" });
   }
   //create jwt
@@ -46,14 +43,12 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log("login");
   const password: string = req.body.password;
   const email: string = req.body.email;
 
   let result = await isEmailExist(email);
 
   if (!result) {
-    console.log("email does not exist");
     return res.status(404).json({ msg: "email does not exist" });
   }
 
@@ -71,7 +66,6 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/currentuser", auth, async (req: any, res) => {
-  console.log("route for link to get user");
   const userId = req.userData.userId;
   const user = await prisma.user.findUnique({
     where: {
