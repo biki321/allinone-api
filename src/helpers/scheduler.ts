@@ -37,7 +37,7 @@ const scheduleStart = function () {
           },
         },
       });
-      console.log(result);
+      // console.log(result);
       if (result.length > 0) {
         const messages: message[] = [];
         result.forEach((ele) => {
@@ -57,7 +57,7 @@ const scheduleStart = function () {
           .messaging()
           .sendAll(messages)
           .then((response) => {
-            console.log("sent", response.successCount);
+            // console.log("sent", response.successCount);
           });
       }
     } catch (error) {
